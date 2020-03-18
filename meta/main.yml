@@ -1,6 +1,6 @@
 galaxy_info:
   author: Russell Zachary Feeser
-  description: This role teaches Ansible to translate English to vulcan via an HTTP POST message to http://api.funtranslations.com/translate/vulcan.json
+  description: This role teaches Ansible to translate English to Vulcan via an HTTP POST message to http://api.funtranslations.com/translate/vulcan.json
   company: IRIS7
 
   license: MIT

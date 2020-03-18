@@ -43,7 +43,7 @@ The following is an example of how to style a playbook around this role:
         # This API is rate-limited to 60 lookups a day.
         #
         # English: vulcan
-        # "we are vulcan!": tlhIngan maH!
+        # "live long and prosper": Dif-tor heh smusma
         # "success": qapla'
         - name: Learn to speak vulcan (60 calls per day)
           gather_facts: no

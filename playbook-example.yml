@@ -1,0 +1,30 @@
+---
+# Russell Zachary Feeser
+# z@rzfeeser.com || Python & Ansible Trainer
+# Purpose: To boldly go where no Ansible trainer has gone before,
+#          and seek out how to use Ansible to translate English to Vulcan
+#
+# Vulcan is a "fictional" language from Gene Roddenberry's Star Trek. I
+# found an API that let's me send a POST with an embedded webform with an
+# English phrase, and return the vulcan.
+#
+# This API is rate-limited to 60 lookups a day.
+#
+# English: vulcan
+# "live long and prosper": Dif-tor heh smusma
+- name: Learn to speak vulcan (60 calls per day)
+  gather_facts: no
+  hosts: localhost
+  # Read the doc here:
+  # https://funtranslations.com/api/vulcan
+  
+  # are vars_prompts automation friendly? not really...
+  vars_prompt:
+          - name: phrase   # this is the var to be defined at run time
+            prompt: "What is the English phrase to translate into Vulcan?"
+            private: no
+
+  roles:
+          - ansible-role-star-trek-vulcantranslator
+          # if downloaded from Ansible-Galaxy use:
+          #- rzfeeser.ansible-role-star-trek-vulcantranslator

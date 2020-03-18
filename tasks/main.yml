@@ -1,0 +1,26 @@
+---
+# tasks file for ansible-role-star-trek-vulcantranslator
+- name: Learn to speak Vulcan
+  uri:
+        url: https://api.funtranslations.com/translate/vulcan.json
+        method: POST
+        body_format: form-urlencoded
+        body:
+          text: "{{ phrase }}"  # this is what we want to have translated
+  register: startrek
+
+- name: Show our results
+  debug:
+          msg: "(English) {{ startrek.json.contents.text }}\n(vulcan) {{ startrek.json.contents.translated }}"
+          # this is the part of the JSON with our response
+
+- name: Ensure a home exists for the vulcan dictionary
+  file:
+          state: directory
+          path: ~/vulcan/   # all intermediate sub directories will be created
+
+- name: Write out the output
+  lineinfile:
+          line: "(English) {{ startrek.json.contents.text }} (vulcan) {{ startrek.json.contents.translated }}\n"
+          path: ~/vulcan/vulcan_dictionary.txt   # where the file is to write to
+          create: yes   # create the file if it is not yet created otherwise will fail
